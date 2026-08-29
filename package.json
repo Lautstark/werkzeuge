@@ -1,0 +1,59 @@
+{
+  "name": "@lautstark/werkzeuge",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, and a size somebody can read.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lautstark/werkzeuge.git"
+  },
+  "keywords": [
+    "aac",
+    "download",
+    "blob",
+    "transliteration",
+    "german"
+  ],
+  "sideEffects": false,
+  "exports": {
+    "./download": {
+      "types": "./dist/download.d.ts",
+      "default": "./dist/download.js"
+    },
+    "./filename": {
+      "types": "./dist/filename.d.ts",
+      "default": "./dist/filename.js"
+    },
+    "./changed": {
+      "types": "./dist/changed.d.ts",
+      "default": "./dist/changed.js"
+    },
+    "./bytes": {
+      "types": "./dist/bytes.d.ts",
+      "default": "./dist/bytes.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "prepare": "npm run build",
+    "preversion": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "happy-dom": "^20.11.6",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
