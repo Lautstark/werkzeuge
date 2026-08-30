@@ -1,8 +1,8 @@
 {
   "name": "@lautstark/werkzeuge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
-  "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, and a size somebody can read.",
+  "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, a size somebody can read, and the link that opens a published Sammlung.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,6 +17,14 @@
   ],
   "sideEffects": false,
   "exports": {
+    "./bytes": {
+      "types": "./dist/bytes.d.ts",
+      "default": "./dist/bytes.js"
+    },
+    "./changed": {
+      "types": "./dist/changed.d.ts",
+      "default": "./dist/changed.js"
+    },
     "./download": {
       "types": "./dist/download.d.ts",
       "default": "./dist/download.js"
@@ -25,13 +33,9 @@
       "types": "./dist/filename.d.ts",
       "default": "./dist/filename.js"
     },
-    "./changed": {
-      "types": "./dist/changed.d.ts",
-      "default": "./dist/changed.js"
-    },
-    "./bytes": {
-      "types": "./dist/bytes.d.ts",
-      "default": "./dist/bytes.js"
+    "./sammlung": {
+      "types": "./dist/sammlung.d.ts",
+      "default": "./dist/sammlung.js"
     }
   },
   "files": [

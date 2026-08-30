@@ -18,6 +18,24 @@ times before this package existed:
 | `@lautstark/werkzeuge/changed` | `changes()` — `onChanged` / `touched`, conventions.md §2.2 |
 | `@lautstark/werkzeuge/bytes` | `weighs(bytes)` — `63 MB` |
 
+### `./sammlung`
+
+The link that opens a published Sammlung: `…/?sammlung=erste-woerter` fetches
+that entry off <https://lautstark.tech/sammlungen/> and hands back a `File`.
+
+**The address carries an id, never a URL.** `?von=https://…` would be fewer
+lines and is the version not to write — it turns a link into "fetch whatever
+this says and import it", and what gets imported is a Sammlung a child then
+reads. With an id there is one host it can come from and the regex is the whole
+attack surface.
+
+That regex is why this is here rather than copied three times. Not the thirty
+lines: a regex nobody tests is one somebody relaxes when they need a character
+through it, in whichever of three repositories they are standing in.
+
+It imports nothing and has no language. What a product does with a `File`, and
+what it says about it, stay the product's.
+
 ## There is no root import
 
 `import { ... } from '@lautstark/werkzeuge'` does not resolve, on purpose.
@@ -48,6 +66,11 @@ being wrong is worth a test.
 **`el()` and friends.** There is no three-way duplication. bildhaft has an
 element builder; mitreden's `el(id)` and vorlaut's `$(id)` are id *getters*
 that happen to share a name with it.
+
+**Importing what `./sammlung` fetches.** It stops at the `File`. vorlaut makes
+a Sammlung of one, mitreden reads sentences out of it, and bildhaft will do a
+third thing; a shared "adopt" would be three products' storage in a package
+that knows about none of them.
 
 **`debounce` / `throttle`.** No product defines one. The inline
 `setTimeout`/`clearTimeout` sites differ in delay and in what they need — a
