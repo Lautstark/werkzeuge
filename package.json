@@ -25,6 +25,10 @@
       "types": "./dist/changed.d.ts",
       "default": "./dist/changed.js"
     },
+    "./dom": {
+      "types": "./dist/dom.d.ts",
+      "default": "./dist/dom.js"
+    },
     "./download": {
       "types": "./dist/download.d.ts",
       "default": "./dist/download.js"

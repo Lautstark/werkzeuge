@@ -17,6 +17,33 @@ times before this package existed:
 | `@lautstark/werkzeuge/filename` | `downloadSlug(name, fallback?)` — a Sammlung's name as a file's |
 | `@lautstark/werkzeuge/changed` | `changes()` — `onChanged` / `touched`, conventions.md §2.2 |
 | `@lautstark/werkzeuge/bytes` | `weighs(bytes)` — `63 MB` |
+| `@lautstark/werkzeuge/dom` | `el` / `svg` / `fill` / `toggleClass` / `byId` |
+
+### `./dom`
+
+Making an element, and finding one — and the reason this is one module rather
+than four is a name, not the thirty lines.
+
+Before it, `el` **built** a node in bildhaft and wochenwerk and **fetched** one
+in mitreden, while vorlaut-editor called the fetcher `$` and had no builder at
+all: `document.createElement` fifty-odd times, twenty-seven in one file. A
+duplicate is merely wasteful. A name that means opposite things in sibling
+repositories is a trap for whoever moves between them, which here is everybody.
+
+So: **`el` makes, `byId` finds.** `$` is not offered — it reads well inside one
+file and is a name nobody can search for in a package.
+
+bildhaft's builder is the base; it had been through the most surfaces. Two rules
+came from elsewhere and would have been lost by taking one copy whole, and both
+are asserted in `test/dom.test.ts`:
+
+- **an ARIA state is a word, not a bare attribute** (wochenwerk). `aria-checked=""`
+  is not "checked", it is unreadable, and a control that is not the answer has to
+  say `aria-checked="false"`. Two call sites there produced neither state and only
+  looked right because a class beside them carried the paint.
+- **`byId` throws rather than answering null** (vorlaut-editor). A missing id is a
+  template and a module that have drifted apart, not a state two hundred call
+  sites should branch on.
 
 ### `./sammlung`
 
