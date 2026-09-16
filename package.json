@@ -52,7 +52,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^7.0.0",
@@ -66,9 +67,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
   }
 }
