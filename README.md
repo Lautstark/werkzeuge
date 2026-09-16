@@ -90,9 +90,9 @@ being wrong is worth a test.
 
 ## What is deliberately not here
 
-**`el()` and friends.** There is no three-way duplication. bildhaft has an
-element builder; mitreden's `el(id)` and vorlaut's `$(id)` are id *getters*
-that happen to share a name with it.
+**`$`.** `el()` is here after all — `./dom` above says why, and why it makes
+rather than fetches. The one-character id getter is what stays out: it reads
+well inside one file and is a name nobody can search for in a package.
 
 **Importing what `./sammlung` fetches.** It stops at the `File`. vorlaut makes
 a Sammlung of one, mitreden reads sentences out of it, and bildhaft will do a
