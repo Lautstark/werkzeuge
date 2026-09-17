@@ -1,6 +1,6 @@
 {
   "name": "@lautstark/werkzeuge",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "type": "module",
   "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, a size somebody can read, and the link that opens a published Sammlung.",
   "license": "MIT",
