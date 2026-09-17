@@ -37,6 +37,10 @@
       "types": "./dist/filename.d.ts",
       "default": "./dist/filename.js"
     },
+    "./reactive-text": {
+      "svelte": "./src/reactive-text.svelte.ts",
+      "default": "./src/reactive-text.svelte.ts"
+    },
     "./sammlung": {
       "types": "./dist/sammlung.d.ts",
       "default": "./dist/sammlung.js"
@@ -55,6 +59,9 @@
     "test": "vitest run",
     "prepare": "npm run build"
   },
+  "peerDependencies": {
+    "svelte": "^5"
+  },
   "devDependencies": {
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
@@ -62,6 +69,7 @@
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "happy-dom": "^20.11.6",
     "semantic-release": "^25.0.9",
+    "svelte": "^5.57.0",
     "typescript": "^5.7.2",
     "vitest": "^3.0.0"
   },

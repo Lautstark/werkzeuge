@@ -8,5 +8,13 @@
     "outDir": "dist",
     "types": []
   },
-  "include": ["src"]
+  "include": ["src"],
+  // A rune module must not reach this build. `prepare` runs it on the
+  // consumer's machine, and tsc has no idea what `$state(0)` is: it emits it as
+  // a call to an undefined identifier, without a word, and that is what would
+  // be installed. `*.svelte.ts` ships as source instead and is compiled in the
+  // consumer's own pass, reached through the `svelte` export condition in
+  // package.json. `npm run typecheck` still reads it — tsconfig.json has no
+  // such exclusion, and it does not emit.
+  "exclude": ["src/**/*.svelte.ts"]
 }
