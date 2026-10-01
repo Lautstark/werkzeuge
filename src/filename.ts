@@ -82,6 +82,15 @@ const spelled = (ch: string): string => {
  * the language the page is in*. A fallback forced on that caller would be a
  * second answer to a settled question, and the one that won would be the one
  * written in no language at all.
+ *
+ * Composed before it is spelled. „ä" has two spellings in Unicode: the one
+ * letter the table knows, and an `a` followed by a combining diaeresis, which
+ * is what macOS hands over for a name that came from a file on its disk and
+ * what some keyboards type. The table looks a letter up one code point at a
+ * time, so the second spelling walked past it as a plain `a` and a mark the
+ * sweep turned into `_` — „Mädchen" downloaded as `Ma_dchen`, a hole in the
+ * middle of the word that is the one thing this module exists not to make.
+ * NFC puts the two back into the one the table has.
  */
 export const downloadSlug = (name: string, fallback = ''): string =>
-  [...name].map(spelled).join('').replace(/[^\w.-]+/g, '_') || fallback;
+  [...name.normalize('NFC')].map(spelled).join('').replace(/[^\w.-]+/g, '_') || fallback;

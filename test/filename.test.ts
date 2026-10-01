@@ -54,6 +54,18 @@ describe('the name a download arrives under', () => {
       .toBe('Erste_Woerter_Fuer_Den_Morgen_Und_Den_Abend');
   });
 
+  it('spells a decomposed letter the same as a composed one', () => {
+    // macOS hands over a name from its disk decomposed: „ä" as `a` plus a
+    // combining diaeresis. Looked up a code point at a time, that was a plain
+    // `a` and a mark swept to `_`, and „Mädchen" arrived as `Ma_dchen`.
+    for (const word of ['Mädchen', 'Wörter', 'Füße', 'Ärger', 'Café']) {
+      const decomposed = word.normalize('NFD');
+      expect(decomposed, 'the input really is the other spelling').not.toBe(word);
+      expect(downloadSlug(decomposed), word).toBe(downloadSlug(word));
+    }
+    expect(downloadSlug('Mädchen'.normalize('NFD'))).toBe('Maedchen');
+  });
+
   it('leaves alone what needs nothing done to it', () => {
     for (const name of ['Kueche', 'board-1.obz', '3x5', 'a_b.c-d']) {
       expect(downloadSlug(name), name).toBe(name);
