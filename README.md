@@ -8,8 +8,9 @@ Shared by [bildhaft](https://github.com/Lautstark/bildhaft),
 
 ## What is in it
 
-Four things, none of them clever, all of them written between three and six
-times before this package existed:
+Six modules. The five in the table are none of them clever, and each was
+written between three and six times before this package existed; `./sammlung`,
+under it, was written here so that it would not be:
 
 | import | what |
 | --- | --- |
