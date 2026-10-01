@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/Lautstark/werkzeuge/compare/v2.0.0...v2.0.1) (2026-10-01)
+
+### Bug Fixes
+
+* **filename:** compose a name before spelling it ([ac6b4aa](https://github.com/Lautstark/werkzeuge/commit/ac6b4aa9a7fca1788434e0884cae1f94172094bb))
+
 ## [2.0.0](https://github.com/Lautstark/werkzeuge/compare/v1.3.0...v2.0.0) (2026-09-18)
 
 ### ⚠ BREAKING CHANGES
