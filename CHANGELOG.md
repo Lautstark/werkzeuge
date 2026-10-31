@@ -1,3 +1,9 @@
+## [2.1.0](https://github.com/Lautstark/werkzeuge/compare/v2.0.1...v2.1.0) (2026-10-31)
+
+### Features
+
+* **svelte:** MoreMenu — the ⋯ in a box's corner, once for every package ([e2d4ee9](https://github.com/Lautstark/werkzeuge/commit/e2d4ee9f314828584646a3d9e2a9efb8534fe293))
+
 ## [2.0.1](https://github.com/Lautstark/werkzeuge/compare/v2.0.0...v2.0.1) (2026-10-01)
 
 ### Bug Fixes
