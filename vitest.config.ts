@@ -1,34 +1,14 @@
-import { compileModule } from 'svelte/compiler';
-import { defineConfig } from 'vitest/config';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 /**
- * Runes, for the one module that ships as source.
- *
- * `src/reactive-text.svelte.ts` is a compiler form, not JavaScript: `$state(0)`
- * is a call to an identifier nothing defines, and importing the file untouched
- * throws a ReferenceError before a single assertion runs.
- *
- * Twelve lines rather than `@sveltejs/vite-plugin-svelte`, which is more than
- * is wanted here — the plugin exists to compile components and there is not a
- * component in this package — and which is also the tool mitreden cannot use:
- * it declares an `optimizeDeps` set, which turns vitest's dependency optimizer
- * on. This is mitreden's copy, and that is deliberate. A consumer reading the
- * module's header is told to write these lines, so the package had better be
- * the proof that they are enough.
- *
- * `post`, so that Vite has already taken the TypeScript out: `compileModule`
- * reads JavaScript, and these files are `.svelte.ts`.
+ * The full `svelte()` plugin, since `svelte/MoreMenu.svelte` is a component and
+ * its test mounts it. It also compiles `src/reactive-text.svelte.ts`, which is
+ * a compiler form rather than JavaScript (`$state(0)` is a call to an
+ * identifier nothing defines). Until the menu arrived this was mitreden's
+ * twelve-line `compileModule` shim, which was enough for a rune module and
+ * cannot compile a component.
  */
-const runes = {
-  name: 'werkzeuge:runes',
-  enforce: 'post' as const,
-  transform(code: string, id: string) {
-    if (!/\.svelte\.[jt]s($|\?)/.test(id)) return null;
-    const made = compileModule(code, { filename: id, dev: false });
-    return { code: made.js.code, map: made.js.map };
-  },
-};
-
 /*
  * happy-dom, because ./download is about the DOM and nothing else: an anchor
  * that has to be in the document, a click on it, and a blob URL let go of
@@ -47,9 +27,11 @@ const runes = {
  * function and says nothing about configuration.
  */
 export default defineConfig({
-  plugins: [runes],
+  plugins: [svelte()],
   resolve: { conditions: ['browser'] },
   test: {
+    include: ['test/**/*.test.ts'],
+    exclude: [...configDefaults.exclude, '.claude/**'],
     environment: 'happy-dom',
     restoreMocks: true,
     unstubGlobals: true,

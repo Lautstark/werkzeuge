@@ -8,9 +8,9 @@ Shared by [bildhaft](https://github.com/Lautstark/bildhaft),
 
 ## What is in it
 
-Six modules. The five in the table are none of them clever, and each was
-written between three and six times before this package existed; `./sammlung`,
-under it, was written here so that it would not be:
+Seven modules. The five in the table are none of them clever, and each was
+written between three and six times before this package existed; `./sammlung`
+and `./svelte/MoreMenu`, under it, were written here so that they would not be:
 
 | import | what |
 | --- | --- |
@@ -37,6 +37,30 @@ through it, in whichever of three repositories they are standing in.
 
 It imports nothing and has no language. What a product does with a `File`, and
 what it says about it, stay the product's.
+
+### `./svelte/MoreMenu`
+
+The `⋯` in the corner of a box and the menu it opens. sicherung drew it in
+`DatenPanel`, and the Symbole and Stimme panels would have drawn it twice
+more: conventions.md §6.0 keeps a provider package from importing
+`@lautstark/design/svelte/Overflow`, and this package depends on nothing in the
+family, so all of them may import it.
+
+```svelte
+<MoreMenu label="Mehr" rows={() => [
+  { label: 'Anderen Ordner wählen …', run: choose },
+  'rule',
+  { label: 'Farbig', checked: true, run: () => prefer('Farbig') },
+  'rule',
+  { label: 'Ordner vergessen', note: 'Danach gilt ARASAAC.', danger: true, run: forget },
+]} />
+```
+
+It emits design's class vocabulary and imports none of it, so it draws only
+where components.css is loaded. `checked` makes a row a `menuitemradio`. A
+row's `run` is called inside the click, so a row may open a file picker. The
+list opens upward when there is more room above, measured against the nearest
+box that scrolls. Raw `.svelte`, compiled by the consumer (conventions.md §6.0).
 
 ### `./reactive-text`
 

@@ -2,7 +2,7 @@
   "name": "@lautstark/werkzeuge",
   "version": "2.0.1",
   "type": "module",
-  "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, a size somebody can read, and the link that opens a published Sammlung.",
+  "description": "The small tools the Lautstark AAC products had each written for themselves: a download that actually starts, a change notifier, a German filename, a size somebody can read, the link that opens a published Sammlung, and the ⋯ menu a box carries in its corner.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -40,11 +40,16 @@
     "./sammlung": {
       "types": "./dist/sammlung.d.ts",
       "default": "./dist/sammlung.js"
+    },
+    "./svelte/MoreMenu": {
+      "svelte": "./svelte/MoreMenu.svelte",
+      "default": "./svelte/MoreMenu.svelte"
     }
   },
   "files": [
     "dist",
     "src",
+    "svelte",
     "CHANGELOG.md",
     "README.md",
     "LICENSE"
@@ -61,6 +66,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@types/node": "^24.19.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "happy-dom": "^20.11.6",
